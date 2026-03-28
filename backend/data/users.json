@@ -1,0 +1,10 @@
+[
+    {
+        "_id": "4bcb50f081e2a79a7298894c",
+        "email": "amit@amit.amit",
+        "password": "$2a$10$Z70Tv.dy3gYUhKjTrZ1/FO33KscYN5jJgItup17.XXd14VHdPoY6i",
+        "username": "amit",
+        "isDev": false,
+        "createdAt": "2026-03-28T11:34:24.783Z"
+    }
+]

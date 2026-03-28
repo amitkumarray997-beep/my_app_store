@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "5a4f50f081e2a79a7298895d",
+    "name": "NotePad Pro",
+    "description": "A high-performance markdown editor for writing and organizing notes efficiently.",
+    "apk": "notepad-pro.apk",
+    "developer": "amit@amit.amit",
+    "developerId": "4bcb50f081e2a79a7298894c",
+    "safe": true,
+    "downloads": 124,
+    "version": "1.2.0",
+    "category": "Productivity",
+    "createdAt": "2026-03-28T10:00:00.000Z"
+  },
+  {
+    "_id": "6c4e50f081e2a79a7298896e",
+    "name": "Galactic Runner",
+    "description": "An endless space runner game with stunning graphics and retro synthwave music.",
+    "apk": "galactic-runner.apk",
+    "developer": "dev@example.com",
+    "developerId": "0e5f50f081e2a79a7298897f",
+    "safe": true,
+    "downloads": 850,
+    "version": "2.0.4",
+    "category": "Games",
+    "createdAt": "2026-03-28T11:00:00.000Z"
+  },
+  {
+    "_id": "7d4d50f081e2a79a7298898f",
+    "name": "SecureChat",
+    "description": "Encrypted messaging app ensuring privacy and anonymity for all users.",
+    "apk": "secure-chat.apk",
+    "developer": "amit@amit.amit",
+    "developerId": "4bcb50f081e2a79a7298894c",
+    "safe": true,
+    "downloads": 45,
+    "version": "0.9.5-beta",
+    "category": "Communication",
+    "createdAt": "2026-03-28T12:00:00.000Z"
+  }
+]

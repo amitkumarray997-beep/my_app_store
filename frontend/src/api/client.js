@@ -3,7 +3,7 @@ import * as SecureStore from "expo-secure-store";
 
 // Android emulator → host machine localhost
 // For physical device: replace with your machine's LAN IP e.g. http://192.168.1.x:5000
-const BASE_URL = "https://nonmonarchally-countrified-freeda.ngrok-free.dev";
+const BASE_URL = "https://myappstore-production.up.railway.app";
 
 const client = axios.create({
   baseURL: BASE_URL,

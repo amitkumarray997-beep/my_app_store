@@ -30,25 +30,27 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error" });
 });
 
+const PORT = parseInt(process.env.PORT) || 5000;
+
 // ── Start ─────────────────────────────────────────────────────
 const start = async () => {
-  // 1. Establish Mongo Connection Native
-  await connectDb();
-
-  // 2. Load ML Scanner
-  await loadML();
-  console.log("🧠 ML model loaded");
-
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`⚡ Server running on http://localhost:${PORT}`);
-    console.log(`   📂 Storage: MongoDB Atlas Native Driver`);
-    console.log(`   POST /auth/signup   — register`);
-    console.log(`   POST /auth/login    — login → JWT`);
-    console.log(`   GET  /apps          — list apps`);
-    console.log(`   POST /apps/publish  — publish (JWT)`);
-    console.log(`   POST /upload        — upload APK (JWT)`);
-    console.log(`   GET  /apps/download/:file — stream APK`);
+  // 1. Listen IMMEDIATELY on 0.0.0.0 to satisfy Railway's healthcheck
+  app.listen(PORT, "0.0.0.0", async () => {
+    console.log(`⚡ Server listening on port ${PORT}`);
+    
+    try {
+      // 2. Load dependencies in the background
+      console.log("⏳ Connecting to MongoDB...");
+      await connectDb();
+      
+      console.log("⏳ Loading ML Scanner...");
+      await loadML();
+      console.log("🧠 ML models loaded & Backend ready");
+      
+    } catch (error) {
+      console.error("❌ Startup Error:", error);
+      // We don't exit so the process stays alive for logs
+    }
   });
 };
 

@@ -2,8 +2,13 @@ node_modules
 npm-debug.log
 .env
 .git
+.gitignore
 .vscode
 frontend
 backend/node_modules
 backend/uploads
 backend/data
+docker-compose.yml
+railway.json
+README.md
+LICENSE

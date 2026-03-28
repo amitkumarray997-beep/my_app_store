@@ -23,10 +23,20 @@ app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 // Railway hits this continuously. We respond immediately.
 app.get("/", (req, res) => {
   res.status(200).json({ 
-    status: "ok", 
+    status: isReady ? "ok" : "warming_up", 
     service: "appstore-backend",
     uptime: process.uptime()
   });
+});
+
+// Warmup Middleware
+let isReady = false;
+app.use((req, res, next) => {
+  if (req.path === "/") return next();
+  if (!isReady) {
+    return res.status(503).json({ error: "Service warming up, please retry in a few seconds." });
+  }
+  next();
 });
 
 // ── 4. Routes (Lazy Loaded to speed up first listen) ──────────
@@ -66,6 +76,7 @@ const start = async () => {
       console.log("------------------------------------------");
       console.log("      ✨ BACKEND LIVE & STABLE ✨");
       console.log("------------------------------------------");
+      isReady = true;
     } catch (error) {
       console.error("❌ CRITICAL BOOTSTRAP FAILURE:", error);
     }

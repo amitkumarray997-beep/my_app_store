@@ -46,6 +46,7 @@ const connectDb = async () => {
     if (error.message.includes("ENOTFOUND")) {
       console.error("💡 PRO-TIP: This looks like a URL-encoding error (check your password for @, #, etc.)");
     }
+    throw error;
   }
 };
 

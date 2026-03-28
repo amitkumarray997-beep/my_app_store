@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.env
+.git
+.vscode
+frontend
+backend/node_modules
+backend/uploads
+backend/data

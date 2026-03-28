@@ -4,24 +4,23 @@ FROM node:20-slim
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy package files from the backend directory (since context is root)
+COPY backend/package*.json ./
 
-# Install only production dependencies
+# Install production dependencies
 RUN npm install --omit=dev
 
-# Copy the rest of the application code
-COPY . .
+# Copy the rest of the backend code
+COPY backend/ .
 
-# Create the uploads directory if it doesn't exist (it will be an ephemeral mount unless a volume is attached)
+# Create the uploads directory
 RUN mkdir -p uploads
 
-# Expose the port the app runs on
-# Railway will automatically set the PORT environment variable and override this if needed
+# Expose the port
 EXPOSE 5000
 
 # Set environment variables
 ENV NODE_ENV=production
 
 # Start the application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
